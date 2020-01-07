@@ -1,0 +1,8 @@
+.TodoItem {
+  margin: 10px;
+}
+
+.TodoItem-completed {
+  text-decoration: line-through;
+  opacity: 0.2;
+}
