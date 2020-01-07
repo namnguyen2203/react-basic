@@ -7,13 +7,12 @@ import { ReactComponent as Completed } from '../assets/icons/completed.svg'
 
 class TodoItem extends Component {
   render() {
-    const { todo, onClickItem } = this.props
+    const { todo, onClickItem, deleteItem } = this.props
     return (
       <li
         className={classNames('list-group-item', {
           'TodoItem-completed': todo.isCompleted
         })}
-        onClick={onClickItem}
         style={{ color: `red` }}
       >
         {todo.isCompleted ? (
@@ -21,9 +20,9 @@ class TodoItem extends Component {
         ) : (
           <Uncompleted width={25} height={25} style={{ marginRight: `10px` }} />
         )}
-        {todo.task}
+        <span onClick={onClickItem}>{todo.task} </span>
         {todo.isCompleted && (
-          <button type='button' className='close' aria-label='Close'>
+          <button type='button' className='close' aria-label='Close' onClick={deleteItem}>
             <span aria-hidden='true'>&times;</span>
           </button>
         )}

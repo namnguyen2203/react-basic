@@ -21,6 +21,7 @@ class App2 extends Component {
     }
     this.onClickItem2 = this.onClickItem2.bind(this)
     this.addNewItem2 = this.addNewItem2.bind(this)
+    this.deleteItem2 = this.deleteItem2.bind(this)
   }
 
   onClickItem2(item) {
@@ -50,6 +51,16 @@ class App2 extends Component {
     }
   }
 
+  deleteItem2(item) {
+    const { todos2 } = this.state
+    const index = todos2.indexOf(item)
+    if (window.confirm('Don want to delete?')) {
+      this.setState({
+        todos2: [...todos2.slice(0, index), ...todos2.slice(index + 1)]
+      })
+    }
+  }
+
   render() {
     return (
       <div className='container'>
@@ -63,7 +74,12 @@ class App2 extends Component {
         </div>
         <ul className='list-group'>
           {this.state.todos2.map((todo, index) => (
-            <TodoItem2 todo={todo} key={index} onClickItem2={this.onClickItem2} />
+            <TodoItem2
+              todo={todo}
+              key={index}
+              onClickItem2={this.onClickItem2}
+              deleteItem2={this.deleteItem2}
+            />
           ))}
         </ul>
       </div>
